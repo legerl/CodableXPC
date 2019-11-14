@@ -90,6 +90,6 @@ public struct XPCSingleValueDecodingContainer: SingleValueDecodingContainer {
     }
 
     public func decode<T: Decodable>(_ type: T.Type) throws -> T {
-        return try T(from: XPCDecoder(withUnderlyingMessage: self.underlyingMessage, at: self.decoder.codingPath))
+      return try T(from: XPCDecoder(withUnderlyingMessage: self.underlyingMessage, at: self.decoder.codingPath, userInfo: decoder.userInfo))
     }
 }

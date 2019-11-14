@@ -203,7 +203,7 @@ public struct XPCUnkeyedDecodingContainer: UnkeyedDecodingContainer {
 
         let foundValue = xpc_array_get_value(self.underlyingMessage, self.currentIndex)
 
-        let constructedValue = try T(from: XPCDecoder(withUnderlyingMessage: foundValue, at: self.decoder.codingPath))
+      let constructedValue = try T(from: XPCDecoder(withUnderlyingMessage: foundValue, at: self.decoder.codingPath, userInfo: decoder.userInfo))
         self.currentIndex += 1
         return constructedValue
     }
@@ -248,6 +248,6 @@ public struct XPCUnkeyedDecodingContainer: UnkeyedDecodingContainer {
 
         let foundValue = xpc_array_get_value(self.underlyingMessage, self.currentIndex)
         self.currentIndex += 1
-        return XPCDecoder(withUnderlyingMessage: foundValue, at: self.decoder.codingPath)
+      return XPCDecoder(withUnderlyingMessage: foundValue, at: self.decoder.codingPath, userInfo: decoder.userInfo)
     }
 }

@@ -212,7 +212,7 @@ public struct XPCKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerPro
 
         let foundValue = try getXPCObject(for: key)
 
-        return try T(from: XPCDecoder(withUnderlyingMessage: foundValue, at: self.decoder.codingPath))
+      return try T(from: XPCDecoder(withUnderlyingMessage: foundValue, at: self.decoder.codingPath, userInfo: self.decoder.userInfo))
     }
 
     public func nestedContainer<NestedKey>(keyedBy type: NestedKey.Type, forKey key: Key) throws -> KeyedDecodingContainer<NestedKey> {
@@ -240,7 +240,7 @@ public struct XPCKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerPro
 
         let foundValue = try getXPCObject(for: XPCCodingKey.superKey)
 
-        return XPCDecoder(withUnderlyingMessage: foundValue, at: self.decoder.codingPath)
+      return XPCDecoder(withUnderlyingMessage: foundValue, at: self.decoder.codingPath, userInfo: self.decoder.userInfo)
     }
 
     public func superDecoder(forKey key: Key) throws -> Decoder {
@@ -249,7 +249,7 @@ public struct XPCKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerPro
 
         let foundValue = try getXPCObject(for: key)
 
-        return XPCDecoder(withUnderlyingMessage: foundValue, at: self.decoder.codingPath)
+      return XPCDecoder(withUnderlyingMessage: foundValue, at: self.decoder.codingPath, userInfo: self.decoder.userInfo)
     }
 }
 
