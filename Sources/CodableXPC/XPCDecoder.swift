@@ -19,9 +19,10 @@ open class XPCDecoder: Decoder {
 
     public var userInfo: [CodingUserInfoKey : Any] = [:]
 
-    public init(withUnderlyingMessage message: xpc_object_t, at codingPath: [CodingKey] = []) {
+   public init(withUnderlyingMessage message: xpc_object_t, at codingPath: [CodingKey] = [], userInfo: [CodingUserInfoKey:Any]) {
         self.underlyingMessage = message
         self.codingPath = codingPath
+        self.userInfo = userInfo
     }
 
     public func container<Key>(keyedBy type: Key.Type) throws -> KeyedDecodingContainer<Key> where Key : CodingKey {
@@ -37,8 +38,8 @@ open class XPCDecoder: Decoder {
         return XPCSingleValueDecodingContainer(referencing: self, wrapping: self.underlyingMessage)
     }
 
-    public static func decode<T: Decodable>(_ type: T.Type, message xpcObject: xpc_object_t) throws -> T {
-        return try T(from: XPCDecoder(withUnderlyingMessage: xpcObject))
+   public static func decode<T: Decodable>(_ type: T.Type, message xpcObject: xpc_object_t, userInfo: [CodingUserInfoKey:Any]) throws -> T {
+      return try T(from: XPCDecoder(withUnderlyingMessage: xpcObject, userInfo: userInfo))
     }
 }
 
