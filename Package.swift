@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-   name: "CodableXPCPackage",
+   name: "CodableXPC",
    products: [
       .library(name: "CodableXPCDynamic",type: .dynamic, targets: ["CodableXPC"]),
       .library(name: "CodableXPCStatic", targets: ["CodableXPC"])
