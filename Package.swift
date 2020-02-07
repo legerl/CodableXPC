@@ -1,23 +1,16 @@
-// swift-tools-version:4.2
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version:5.0
 
 import PackageDescription
 
 let package = Package(
-    name: "CodableXPC",
-    products: [
-        .library(
-            name: "CodableXPC",
-            targets: ["CodableXPC"]),
-    ],
-    dependencies: [
-    ],
-    targets: [
-        .target(
-            name: "CodableXPC",
-            dependencies: []),
-        .testTarget(
-            name: "CodableXPCTests",
-            dependencies: ["CodableXPC"]),
+   name: "CodableXPCPackage",
+   products: [
+      .library(name: "CodableXPCDynamic",type: .dynamic, targets: ["CodableXPC"]),
+      .library(name: "CodableXPCStatic", targets: ["CodableXPC"])
+   ],
+   dependencies: [ ],
+   targets: [
+	.target(name: "CodableXPC", dependencies: []),
+        .testTarget(name: "CodableXPCTests", dependencies: ["CodableXPC"]),
     ]
 )
