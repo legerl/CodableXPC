@@ -13,11 +13,11 @@
 import XPC
 
 public protocol XPCMessageProvider {
-   var xpcMessage: xpc_object_t { get }
+   var xpcMessage: xpc_object_t? { get }
 }
 
 extension XPCDecoder: XPCMessageProvider {
-   var xpcMessage: xpc_object_t {
+   public var xpcMessage: xpc_object_t? {
       return self.underlyingMessage
    }
 }

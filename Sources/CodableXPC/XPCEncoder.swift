@@ -13,7 +13,7 @@
 import XPC
 
 extension XPCEncoder: XPCMessageProvider {
-   var xpcMessage: xpc_object_t {
+   public var xpcMessage: xpc_object_t? {
       return self.topLevelContainer
    }
 }
