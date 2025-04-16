@@ -12,8 +12,18 @@
 
 import XPC
 
+public protocol XPCMessageProvider {
+   var xpcMessage: xpc_object_t { get }
+}
+
+extension XPCDecoder: XPCMessageProvider {
+   var xpcMessage: xpc_object_t {
+      return self.underlyingMessage
+   }
+}
+
 open class XPCDecoder: Decoder {
-    private let underlyingMessage: xpc_object_t
+    fileprivate let underlyingMessage: xpc_object_t
 
     public var codingPath: [CodingKey]
 

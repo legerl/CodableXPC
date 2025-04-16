@@ -12,6 +12,12 @@
 
 import XPC
 
+extension XPCEncoder: XPCMessageProvider {
+   var xpcMessage: xpc_object_t {
+      return self.topLevelContainer
+   }
+}
+
 public class XPCEncoder: Encoder {
     private enum ContainerKind: String {
         case keyed
