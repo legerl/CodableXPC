@@ -30,7 +30,7 @@ public struct XPCUnkeyedEncodingContainer: UnkeyedEncodingContainer {
 
     private let encoder: XPCEncoder
 
-   @_spi(CodableXPCInternals) public let underlyingMessage: xpc_object_t
+    private let underlyingMessage: xpc_object_t
 
     // MARK: - Initialization
     init(referencing encoder: XPCEncoder, wrapping underlyingMessage: xpc_object_t) throws {

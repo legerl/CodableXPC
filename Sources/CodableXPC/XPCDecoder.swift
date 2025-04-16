@@ -13,7 +13,7 @@
 import XPC
 
 open class XPCDecoder: Decoder {
-   @_spi(CodableXPCInternals) public let underlyingMessage: xpc_object_t
+    private let underlyingMessage: xpc_object_t
 
     public var codingPath: [CodingKey]
 

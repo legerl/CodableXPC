@@ -35,7 +35,7 @@ public struct XPCUnkeyedDecodingContainer: UnkeyedDecodingContainer {
 
     public private(set) var currentIndex: Int
 
-   @_spi(CodableXPCInternals) public let underlyingMessage: xpc_object_t
+    private let underlyingMessage: xpc_object_t
 
     private let decoder: XPCDecoder
 

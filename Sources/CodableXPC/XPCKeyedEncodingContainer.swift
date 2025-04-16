@@ -21,7 +21,7 @@ public struct XPCKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerPro
     /// A reference to the encoder we're writing to.
     private let encoder: XPCEncoder
 
-   @_spi(CodableXPCInternals) public let underlyingMesage: xpc_object_t
+    private let underlyingMesage: xpc_object_t
 
     /// The path of coding keys taken to get to this point in encoding.
     public var codingPath: [CodingKey] {
