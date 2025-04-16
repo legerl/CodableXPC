@@ -59,7 +59,7 @@ public struct XPCKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerPro
         return try foundValue.decodeFloatingPointNumber(type.self, at: self.codingPath)
     }
 
-   @_spi(CodableXPCInternals) public func getXPCObject(for key: CodingKey) throws -> xpc_object_t {
+   @_spi(CodableXPCInternals) public public func getXPCObject(for key: CodingKey) throws -> xpc_object_t {
         guard let foundValue = key.stringValue.withCString({
             return xpc_dictionary_get_value(self.underlyingMessage, $0)
         }) else {
