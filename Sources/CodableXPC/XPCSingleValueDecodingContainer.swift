@@ -21,7 +21,7 @@ public struct XPCSingleValueDecodingContainer: SingleValueDecodingContainer {
     }
 
     private let decoder: XPCDecoder
-    private let underlyingMessage: xpc_object_t
+   @_spi(CodableXPCInternals) public let underlyingMessage: xpc_object_t
 
     // MARK: - Initialization
     init(referencing decoder: XPCDecoder, wrapping xpcObject: xpc_object_t) {

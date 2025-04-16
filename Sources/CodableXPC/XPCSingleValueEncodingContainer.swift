@@ -21,7 +21,7 @@ public struct XPCSingleValueEncodingContainer: SingleValueEncodingContainer {
     }
 
     private let encoder: XPCEncoder
-    private let insertionClosure: (_ value: xpc_object_t) throws -> ()
+   @_spi(CodableXPCInternals) public let insertionClosure: (_ value: xpc_object_t) throws -> ()
 
     // MARK: - Initialization
     init(referencing encoder: XPCEncoder, insertionClosure: @escaping (_ value: xpc_object_t) throws -> ()) {
